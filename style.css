@@ -573,12 +573,26 @@
   }
   
   .tech-stack span {
-    background: rgba(255, 255, 255, 0.9);
+    background: var(--bg-light);
     color: var(--text);
     padding: 4px 12px;
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: 500;
+    border: 1px solid var(--border);
+    transition: var(--transition);
+  }
+
+  .dark .tech-stack span {
+    background: var(--gray);
+    border-color: var(--border-dark);
+  }
+
+  .tech-stack span:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
   }
   
   .scroll-down {
