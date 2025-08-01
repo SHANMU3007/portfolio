@@ -1402,7 +1402,7 @@ img {
   }
 
   .hero-image {
-    order: -1;
+    /* REMOVED: order: -1; */
     margin-bottom: 20px;
   }
 
@@ -1539,11 +1539,6 @@ img {
 
   .social-links {
     justify-content: center;
-  }
-
-  .footer-bottom {
-    flex-direction: column;
-    gap: 15px;
   }
 
   .back-to-top {
