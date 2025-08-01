@@ -199,6 +199,7 @@ img {
   z-index: 1000;
   box-shadow: var(--shadow);
   transition: var(--transition);
+  height: 70px; /* Set a fixed height for the header */
 }
 
 .dark .header {
@@ -211,6 +212,7 @@ img {
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
+  height: 100%; /* Ensure container fills header height */
 }
 
 .logo {
@@ -364,6 +366,11 @@ img {
 .mobile-link:hover {
   background-color: var(--gray);
   color: var(--primary);
+}
+
+/* Content Wrapper to prevent overlap with fixed header */
+.content-wrapper {
+  padding-top: 70px; /* Adjust this value to match your header height */
 }
 
 /* Hero Section */
@@ -1354,22 +1361,42 @@ img {
   .contact-form {
     padding: 25px;
   }
-  
+}
+
+/* Enhanced Mobile Responsiveness */
+@media (max-width: 768px) {
   /* Navbar specific changes for mobile */
   .header .container {
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
   }
-  
+
   .logo {
-    flex-basis: 100%; /* Make the logo take up the full width */
-    text-align: center;
+    font-size: 1.2rem;
+    flex-grow: 1;
+    margin-right: 15px;
   }
   
   .header-actions {
-    flex-grow: 1; /* Allow actions to fill available space */
-    justify-content: center; /* Center the icons horizontally */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .social-link {
+    display: none;
+  }
+  
+  .theme-toggle {
+    padding: 8px;
+    font-size: 1rem;
+  }
+
+  .mobile-menu-button {
+    font-size: 1.1rem;
+    padding: 8px;
   }
   
   .hero-content {
@@ -1381,6 +1408,16 @@ img {
 
   .hero-text {
     max-width: 100%;
+  }
+  
+  /* Re-order hero content for mobile view */
+  .hero-image {
+    order: 1; /* Place the image after the text */
+    margin-bottom: 20px;
+  }
+
+  .hero-text {
+    order: 2; /* Place the text after the image */
   }
 
   .hero h1 {
@@ -1414,12 +1451,7 @@ img {
   .stat-number {
     font-size: 1.5rem;
   }
-
-  .hero-image {
-    order: -1;
-    margin-bottom: 20px;
-  }
-
+  
   .image-container img {
     width: 280px;
     height: 280px;
@@ -1555,11 +1587,120 @@ img {
     justify-content: center;
   }
 
+  .footer-bottom {
+    flex-direction: column;
+    gap: 15px;
+  }
+
   .back-to-top {
     width: 45px;
     height: 45px;
     bottom: 20px;
     right: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .section {
+    padding: 40px 0;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-description {
+    font-size: 0.95rem;
+  }
+
+  .hero-badge {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+
+  .image-container img {
+    width: 250px;
+    height: 250px;
+  }
+
+  .btn {
+    padding: 10px 18px;
+    font-size: 0.85rem;
+  }
+
+  .about-intro p {
+    font-size: 0.95rem;
+  }
+
+  .feature {
+    padding: 12px;
+    margin-bottom: 12px;
+  }
+
+  .feature i {
+    font-size: 1.2rem;
+  }
+
+  .skill-card {
+    padding: 15px;
+  }
+
+  .skill-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+
+  .project-details {
+    padding: 15px;
+  }
+
+  .project-details h3 {
+    font-size: 1.1rem;
+  }
+
+  .project-details p {
+    font-size: 0.9rem;
+  }
+
+  .contact-form {
+    padding: 20px;
+  }
+
+  .info-card {
+    padding: 15px;
+  }
+
+  .info-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+
+  .footer-content {
+    gap: 20px;
+  }
+
+  .footer-section h4 {
+    font-size: 1rem;
+  }
+
+  .footer-section p,
+  .footer-section ul li {
+    font-size: 0.9rem;
   }
 }
 
