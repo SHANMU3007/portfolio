@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.querySelector('.contact-form');
     if (!contactForm) return;
   
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', async function(e) {
       e.preventDefault();
       
       // Get form data
@@ -220,19 +220,38 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
       
-      // Simulate form submission
+      // Update button state
       const submitButton = this.querySelector('button[type="submit"]');
       const originalText = submitButton.innerHTML;
       
       submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
       submitButton.disabled = true;
       
-      setTimeout(() => {
-        showNotification('Thank you for your message! I will get back to you soon.', 'success');
-        this.reset();
+      try {
+        // Send to backend
+        const response = await fetch('http://localhost:3000/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+          showNotification(result.message, 'success');
+          this.reset();
+        } else {
+          showNotification(result.message || 'Failed to send message. Please try again.', 'error');
+        }
+      } catch (error) {
+        console.error('Contact form error:', error);
+        showNotification('Network error. Please check your connection and try again.', 'error');
+      } finally {
         submitButton.innerHTML = originalText;
         submitButton.disabled = false;
-      }, 2000);
+      }
     });
   }
   
